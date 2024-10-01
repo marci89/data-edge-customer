@@ -1,0 +1,31 @@
+<header class="navbar navbar-expand-md navbar-dark bd-navbar nav-header">
+    <nav class="container-fluid flex-wrap flex-md-nowrap" aria-label="Main navigation">
+      <a class="navbar-brand mx-2" routerLink="/" routerLinkActive="active">Dataedge</a>
+  
+      <!-- toggle button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bdNavbar"
+        aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars fa-lg mx-2"></i>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="bdNavbar">
+        <!--  Links -->
+        <ul class="navbar-nav flex-row flex-wrap bd-navbar-nav pt-2 py-md-0">
+            <!--  Only admin role -->
+
+            <li class="nav-item col-6 col-md-auto">
+              <a class="nav-link p-2" routerLink="/purchases" routerLinkActive="active">Vásárlások </a>
+            </li>
+            <li class="nav-item col-6 col-md-auto">
+              <a class="nav-link p-2" routerLink="/shops" routerLinkActive="active"> Boltok
+              </a>
+            </li>
+            <li class="nav-item col-6 col-md-auto">
+              <a class="nav-link p-2" routerLink="/items" routerLinkActive="active"> Tételek
+              </a>
+            </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  

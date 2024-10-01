@@ -1,0 +1,36 @@
+<div class="container">
+    <form [formGroup]="createForm" (ngSubmit)="createShop()" autocomplete="off">
+      <h3 class="text-center mt-2">Bolt létrehozása</h3>
+      <hr>
+  <!-- Any error -->
+      <div *ngIf="serverError" class="alert alert-danger">
+        {{ serverError }}
+      </div>
+  
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name">Név</label>
+        <input type="text" pInputText  formControlName="name"  maxlength="200" class="form-control">
+         <div *ngIf="createForm.get('name')?.errors && createForm.get('name')?.touched" class="text-danger">
+           <p *ngIf="createForm.get('name')?.hasError('required')">Név megadása kötelező!</p>
+         </div>
+      </div>
+  
+      <!-- partner id -->
+      <div class="mb-3">
+        <label for="partnerId">Partner azonosító</label>
+        <input type="text" pInputText  formControlName="partnerId"  maxlength="200" class="form-control">
+        <div *ngIf="createForm.get('partnerId')?.errors && createForm.get('partnerId')?.touched" class="text-danger">
+          <p *ngIf="createForm.get('partnerId')?.hasError('required')">Partner azonosító kötelező!</p>
+        </div>
+      </div>
+  
+      <!-- Buttons -->
+      <div class="text-center">
+        <p-button [disabled]="!createForm.valid" class="me-2" type="submit">Mentés</p-button>
+        <p-button styleClass="p-button-danger" (click)="cancel()" type="button">Mégse</p-button>
+      </div>
+    </form>
+  </div>
+  
+  
