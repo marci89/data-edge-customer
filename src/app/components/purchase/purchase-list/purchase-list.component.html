@@ -115,7 +115,7 @@
                 <td>{{ item.shopName }}</td>
                 <td style="text-align: right;" width="10">
                     <i class="fa fa-pencil fa-lg text-info" (click)="openEditDialog(item.id)"></i>
-                    <i class="fa fa-eye fa-lg text-info"  [routerLink]="['/purchase', item.id]"></i>
+                    <i class="fa fa-eye fa-lg text-success"  [routerLink]="['/purchase', item.id]"></i>
                 </td>
                
             </tr>
@@ -123,8 +123,5 @@
 
 
     </p-table>
-
-
-
     
 </div>
