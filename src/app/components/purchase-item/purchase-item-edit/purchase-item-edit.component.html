@@ -1,0 +1,59 @@
+<div class="container">
+    <form [formGroup]="editForm" (ngSubmit)="editPurchaseItem()" autocomplete="off">
+        <h3 class="text-center mt-2">Tétel szerkesztése</h3>
+        <hr>
+        <!-- Any error -->
+        <div *ngIf="serverError" class="alert alert-danger">
+            {{ serverError }}
+        </div>
+
+          <!-- item (Dropdown List) -->
+          <div class="mb-3">
+    
+            <p-dropdown 
+                [options]="items" 
+                optionLabel="name" 
+                optionValue="id" 
+                formControlName="partnerCtID"
+                placeholder="Cikk kiválasztása">
+            </p-dropdown>
+            <div *ngIf="editForm.get('partnerCtID')?.errors && editForm.get('partnerCtID')?.touched" class="text-danger">
+                <p *ngIf="editForm.get('partnerCtID')?.hasError('required')">Cikk megadása kötelező!</p>
+            </div>
+        </div>
+
+        <!-- quantity -->
+        <div class="mb-3">
+            <label for="quantity">Mennyiség </label>
+            <input type="number" pInputText formControlName="quantity" class="form-control">
+            <div *ngIf="editForm.get('quantity')?.errors && editForm.get('quantity')?.touched" class="text-danger">
+                <p *ngIf="editForm.get('quantity')?.hasError('required')">Mennyiség megadása kötelező!</p>
+            </div>
+        </div>
+
+
+        <!-- gross -->
+        <div class="mb-3">
+            <label for="gross">Bruttó </label>
+            <input type="number" pInputText formControlName="gross" class="form-control">
+            <div *ngIf="editForm.get('gross')?.errors && editForm.get('gross')?.touched" class="text-danger">
+                <p *ngIf="editForm.get('gross')?.hasError('required')">Bruttó megadása kötelező!</p>
+            </div>
+        </div>
+
+        <!-- partner id -->
+        <div class="mb-3">
+            <label for="partnerID">Partner azonosító</label>
+            <input type="number" pInputText formControlName="partnerID" class="form-control">
+            <div *ngIf="editForm.get('partnerID')?.errors && editForm.get('partnerID')?.touched" class="text-danger">
+                <p *ngIf="editForm.get('partnerID')?.hasError('required')">Partner azonosító kötelező!</p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="text-center">
+            <p-button [disabled]="!editForm.valid" class="me-2" type="submit">Szerkesztés</p-button>
+            <p-button styleClass="p-button-danger" (click)="cancel()" type="button">Mégse</p-button>
+        </div>
+    </form>
+</div>

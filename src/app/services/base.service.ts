@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { HttpParams } from '@angular/common/http';
-import { PagedList, PaginatedResult } from '../interfaces/pagination.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -21,19 +20,5 @@ export class BaseService {
       }
     }
     return params;
-  }
-
-   //Generic PagedList to PaginatedResult mapper
-   protected mapPagedListToPaginatedResult<T>(response: PagedList<T>): PaginatedResult<T> {
-    debugger;
-    return {
-      result: response.items,
-      pagination: {
-        currentPage: response.currentPage,
-        totalPages: response.totalPages,
-        itemsPerPage: response.pageSize,
-        totalItems: response.totalCount,
-      },
-    };
   }
 }

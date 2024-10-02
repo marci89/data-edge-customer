@@ -1,6 +1,6 @@
 <div class="container">
-    <form [formGroup]="createForm" (ngSubmit)="createPurchase()" autocomplete="off">
-        <h3 class="text-center mt-2">Vásárlás létrehozása</h3>
+    <form [formGroup]="editForm" (ngSubmit)="editPurchase()" autocomplete="off">
+        <h3 class="text-center mt-2">Vásárlás szerkesztése</h3>
         <hr>
         <!-- Any error -->
         <div *ngIf="serverError" class="alert alert-danger">
@@ -11,9 +11,9 @@
         <div class="mb-3">
             <label for="purchaseAmount">Vásárlás összeg</label>
             <input type="number" pInputText formControlName="purchaseAmount" maxlength="200" class="form-control">
-            <div *ngIf="createForm.get('purchaseAmount')?.errors && createForm.get('purchaseAmount')?.touched"
+            <div *ngIf="editForm.get('purchaseAmount')?.errors && editForm.get('purchaseAmount')?.touched"
                 class="text-danger">
-                <p *ngIf="createForm.get('purchaseAmount')?.hasError('required')">Vásárlás összeg megadása kötelező!</p>
+                <p *ngIf="editForm.get('purchaseAmount')?.hasError('required')">Vásárlás összeg megadása kötelező!</p>
             </div>
         </div>
 
@@ -21,9 +21,9 @@
         <div class="mb-3">
             <label for="cashRegisterId">Pénztárgép azonosító</label>
             <input type="number" pInputText formControlName="cashRegisterId" maxlength="200" class="form-control">
-            <div *ngIf="createForm.get('cashRegisterId')?.errors && createForm.get('cashRegisterId')?.touched"
+            <div *ngIf="editForm.get('cashRegisterId')?.errors && editForm.get('cashRegisterId')?.touched"
                 class="text-danger">
-                <p *ngIf="createForm.get('cashRegisterId')?.hasError('required')">Pénztárgép azonosító megadása kötelező!
+                <p *ngIf="editForm.get('cashRegisterId')?.hasError('required')">Pénztárgép azonosító megadása kötelező!
                 </p>
             </div>
         </div>
@@ -32,14 +32,14 @@
         <div class="mb-3">
             <label for="partnerId">Partner azonosító</label>
             <input type="number" pInputText formControlName="partnerId" maxlength="200" class="form-control">
-            <div *ngIf="createForm.get('partnerId')?.errors && createForm.get('partnerId')?.touched" class="text-danger">
-                <p *ngIf="createForm.get('partnerId')?.hasError('required')">Partner azonosító kötelező!</p>
+            <div *ngIf="editForm.get('partnerId')?.errors && editForm.get('partnerId')?.touched" class="text-danger">
+                <p *ngIf="editForm.get('partnerId')?.hasError('required')">Partner azonosító kötelező!</p>
             </div>
         </div>
 
         <!-- Buttons -->
         <div class="text-center">
-            <p-button [disabled]="!createForm.valid" class="me-2" type="submit">Mentés</p-button>
+            <p-button [disabled]="!editForm.valid" class="me-2" type="submit">Szerkesztés</p-button>
             <p-button styleClass="p-button-danger" (click)="cancel()" type="button">Mégse</p-button>
         </div>
     </form>

@@ -1,22 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ListShopRequest, Shop } from '../../../interfaces/shop.interface';
-import { Pagination } from '../../../interfaces/pagination.interface';
 import { Subscription } from 'rxjs';
 import { ShopService } from '../../../services/shop.service';
 import { ModalService } from '../../../services/modal.service';
 import { ShopCreateComponent } from '../shop-create/shop-create.component';
 import { ShopEditComponent } from '../shop-edit/shop-edit.component';
 
-interface Column {
-  field: string;
-  header: string;
-  customExportHeader?: string;
-}
-
-interface ExportColumn {
-  title: string;
-  dataKey: string;
-}
 
 @Component({
   selector: 'app-shop-list',
@@ -38,7 +27,6 @@ export class ShopListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    //subscribe word list to update the table from different components
     this.shopListSubscription$ = this.shopService.filteredList$.subscribe({
       next: shops => {
         this.shops = shops ?? [];
@@ -50,12 +38,13 @@ export class ShopListComponent implements OnInit, OnDestroy {
     this.listShop();
   }
 
-  // list words from server
+  // list  from server
   listShop() {
+    debugger;
     this.shopService.list(this.filter).subscribe({
       next: _ => {},
       error: error => {
-     //   this.toastr.error(this.translate.instant(error.error))
+      this.modalService.openToaster(error.error, false);
       }
     })
   }

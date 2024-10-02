@@ -74,17 +74,17 @@
               field="id"></p-sortIcon></th>
           <th pSortableColumn="name" >Név <p-sortIcon
               field="name"></p-sortIcon></th>
-          <th pSortableColumn="partnerID" >Partner azonosító <p-sortIcon
-              field="partnerID"></p-sortIcon></th>
+          <th pSortableColumn="partnerId" >Partner azonosító <p-sortIcon
+              field="partnerId"></p-sortIcon></th>
           <th></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-shop>
         <tr>
-          <td style="width:30%">{{ shop.id }}</td>
-          <td style="width:30%">{{ shop.name }}</td>
-          <td style="width:30%">{{ shop.partnerId }}</td>
-          <td style="text-align: right; width: 10%;" width="10">
+          <td>{{ shop.id }}</td>
+          <td >{{ shop.name }}</td>
+          <td >{{ shop.partnerId }}</td>
+          <td style="text-align: right;" width="10">
             <i class="fa fa-pencil fa-lg text-info" (click)="openEditDialog(shop.id)"></i>
           </td>
         </tr>

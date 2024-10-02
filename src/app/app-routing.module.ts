@@ -6,11 +6,13 @@ import { ItemListComponent } from './components/item/item-list/item-list.compone
 import { PurchaseCreateComponent } from './components/purchase/purchase-create/purchase-create.component';
 import { ShopCreateComponent } from './components/shop/shop-create/shop-create.component';
 import { ItemCreateComponent } from './components/item/item-create/item-create.component';
+import { PurchaseItemListComponent } from './components/purchase-item/purchase-item-list/purchase-item-list.component';
 
 
 const routes: Routes = [
   { path: '', component: PurchaseListComponent },
   { path: 'purchases', component: PurchaseListComponent },
+  { path: 'purchase/:id', component: PurchaseItemListComponent},
   { path: 'purchases/create', component: PurchaseCreateComponent },
   { path: 'shops', component: ShopListComponent },
   { path: 'shops/create', component: ShopCreateComponent },

@@ -1,31 +1,33 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Shop, UpdateShopRequest } from '../../../interfaces/shop.interface';
-import { ShopService } from '../../../services/shop.service';
 import { ModalService } from '../../../services/modal.service';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { Purchase, UpdatePurchaseRequest } from '../../../interfaces/purchase.interface';
+import { PurchaseService } from '../../../services/purchase.service';
+
 
 @Component({
-  selector: 'app-shop-edit',
-  templateUrl: './shop-edit.component.html',
-  styleUrl: './shop-edit.component.css'
+  selector: 'app-purchase-edit',
+  templateUrl: './purchase-edit.component.html',
+  styleUrl: './purchase-edit.component.css'
 })
-export class ShopEditComponent implements OnInit {
+
+export class PurchaseEditComponent implements OnInit {
   editForm: FormGroup = new FormGroup({})
-  shop: Shop = {} as Shop;
-  updateRequest: UpdateShopRequest = {} as UpdateShopRequest;
+  purchase: Purchase = {} as Purchase;
+  updateRequest: UpdatePurchaseRequest = {} as UpdatePurchaseRequest;
   serverError: string = "";
 
   constructor(
     private modalService: ModalService,
-    private shopService: ShopService,
+    private purchaseService: PurchaseService,
     private config: DynamicDialogConfig
 
   ) { }
 
   ngOnInit(): void {
     this.initForm();
-    this.readShop();
+    this.readPurchase();
   }
 
   //Get dialog data (id)
@@ -36,22 +38,24 @@ export class ShopEditComponent implements OnInit {
   // Init form
   initForm() {
     this.editForm = new FormGroup({
-      name: new FormControl('', Validators.required),
+      purchaseAmount: new FormControl('', Validators.required),
+      cashRegisterId: new FormControl('', Validators.required),
       partnerId: new FormControl('', Validators.required),
+
     });
   }
 
    //Add values for editForm
    addValuesToForm() {
-    this.editForm.patchValue(this.shop)
+    this.editForm.patchValue(this.purchase)
   }
-
+  
    // Read by id
-   readShop() {
+   readPurchase() {
     const id = this.getIdFromDialog();
-    this.shopService.readById(id).subscribe({
-      next: shop => {
-        this.shop = shop;
+    this.purchaseService.readById(id).subscribe({
+      next: purchase => {
+        this.purchase = purchase;
         this.addValuesToForm();
       },
       error: error => {
@@ -61,11 +65,11 @@ export class ShopEditComponent implements OnInit {
   }
 
   //edit
-  editShop() {
+  editPurchase() {
     this.updateRequest = this.editForm.value;
     this.updateRequest.id = this.getIdFromDialog();
 
-    this.shopService.update(this.updateRequest).subscribe({
+    this.purchaseService.update(this.updateRequest).subscribe({
       next: _ => {
 
         this.modalService.openToaster('Sikeres szerkesztés!', true)

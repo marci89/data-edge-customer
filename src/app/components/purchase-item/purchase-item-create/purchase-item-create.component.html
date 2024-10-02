@@ -1,0 +1,59 @@
+<div class="container">
+    <form [formGroup]="createForm" (ngSubmit)="createPurchaseItem()" autocomplete="off">
+        <h3 class="text-center mt-2">Tétel Létrehozása</h3>
+        <hr>
+        <!-- Any error -->
+        <div *ngIf="serverError" class="alert alert-danger">
+            {{ serverError }}
+        </div>
+
+        <!-- item (Dropdown List) -->
+        <div class="mb-3">
+    
+            <p-dropdown 
+                [options]="items" 
+                optionLabel="name" 
+                optionValue="id" 
+                formControlName="partnerCtID"
+                placeholder="Cikk kiválasztása">
+            </p-dropdown>
+            <div *ngIf="createForm.get('partnerCtID')?.errors && createForm.get('partnerCtID')?.touched" class="text-danger">
+                <p *ngIf="createForm.get('partnerCtID')?.hasError('required')">Cikk megadása kötelező!</p>
+            </div>
+        </div>
+
+        <!-- quantity -->
+        <div class="mb-3">
+            <label for="quantity">Mennyiség </label>
+            <input type="number" pInputText formControlName="quantity" class="form-control">
+            <div *ngIf="createForm.get('quantity')?.errors && createForm.get('quantity')?.touched" class="text-danger">
+                <p *ngIf="createForm.get('quantity')?.hasError('required')">Mennyiség megadása kötelező!</p>
+            </div>
+        </div>
+
+
+        <!-- gross -->
+        <div class="mb-3">
+            <label for="gross">Bruttó </label>
+            <input type="number" pInputText formControlName="gross" class="form-control">
+            <div *ngIf="createForm.get('gross')?.errors && createForm.get('gross')?.touched" class="text-danger">
+                <p *ngIf="createForm.get('gross')?.hasError('required')">Bruttó megadása kötelező!</p>
+            </div>
+        </div>
+
+        <!-- partner id -->
+        <div class="mb-3">
+            <label for="partnerId">Partner azonosító</label>
+            <input type="number" pInputText formControlName="partnerId" class="form-control">
+            <div *ngIf="createForm.get('partnerId')?.errors && createForm.get('partnerId')?.touched" class="text-danger">
+                <p *ngIf="createForm.get('partnerId')?.hasError('required')">Partner azonosító kötelező!</p>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="text-center">
+            <p-button [disabled]="!createForm.valid" class="me-2" type="submit">Mentés</p-button>
+            <p-button styleClass="p-button-danger" (click)="cancel()" type="button">Mégse</p-button>
+        </div>
+    </form>
+</div>

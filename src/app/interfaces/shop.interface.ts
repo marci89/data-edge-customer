@@ -1,4 +1,4 @@
-import { PaginationRequest } from "./pagination.interface";
+
 
 export interface Shop {
     id: number;

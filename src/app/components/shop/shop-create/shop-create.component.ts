@@ -31,17 +31,17 @@ export class ShopCreateComponent implements OnInit {
     });
   }
 
-  //word create
+  // create
   createShop() {
     this.shopService.create(this.createForm.value).subscribe({
       next: _ => {
-       // this.toastr.success(this.translate.instant('SaveSuccess'))
+        this.modalService.openToaster('Sikeres létrehozás!', true)
         this.createForm.reset();
-        //set focus to the first input
-       // this.englishTextInput.nativeElement.focus();
+        this.modalService.close();
+
       },
       error: error => {
-       // this.toastr.error(this.translate.instant(error.error))
+        this.modalService.openToaster(error.error, false)
       }
     })
   }

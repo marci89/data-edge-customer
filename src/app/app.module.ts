@@ -32,6 +32,11 @@ import { PurchaseCreateComponent } from './components/purchase/purchase-create/p
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ShopEditComponent } from './components/shop/shop-edit/shop-edit.component';
+import { PurchaseEditComponent } from './components/purchase/purchase-edit/purchase-edit.component';
+import { ItemEditComponent } from './components/item/item-edit/item-edit.component';
+import { PurchaseItemEditComponent } from './components/purchase-item/purchase-item-edit/purchase-item-edit.component';
+import { PurchaseItemCreateComponent } from './components/purchase-item/purchase-item-create/purchase-item-create.component';
+import { PurchaseItemListComponent } from './components/purchase-item/purchase-item-list/purchase-item-list.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,12 @@ import { ShopEditComponent } from './components/shop/shop-edit/shop-edit.compone
     ItemListComponent,
     PurchaseListComponent,
     PurchaseCreateComponent,
-    ShopEditComponent
+    ShopEditComponent,
+    PurchaseEditComponent,
+    ItemEditComponent,
+    PurchaseItemEditComponent,
+    PurchaseItemCreateComponent,
+    PurchaseItemListComponent
   ],
   imports: [
 

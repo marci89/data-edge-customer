@@ -1,9 +1,10 @@
-<h1 style="text-align: center;">Vásárlások</h1>
+<h1 style="text-align: center;">Vásárlási tételek</h1>
 <!-- Filter panel -->
 <div class="mt-3" *ngIf="filter">
     <div class="card col-12">
         <div class="card-body">
-            <form #form="ngForm" class="mb-3" (ngSubmit)="listpurchase()" autocomplete="off">
+            <form #form="ngForm" class="mb-3" (ngSubmit)="listPurchaseItem()" autocomplete="off">
+
                 <div class="row">
 
                     <!-- Id -->
@@ -14,19 +15,20 @@
                         </div>
                     </div>
 
-                    <!-- date -->
+                    <!-- partnerCtID -->
                     <div class="col-12 col-md-3 mb-3">
                         <div class="form-group">
-                            <label for="date">Dátum</label>
-                            <input type="date" pInputText name="date" [(ngModel)]="filter.date" class="form-control">
+                            <label for="partnerCtID">Cikk azonosító</label>
+                            <input type="number" pInputText name="partnerCtID" [(ngModel)]="filter.partnerCtID"
+                                class="form-control">
                         </div>
                     </div>
 
-                    <!-- purchaseAmount -->
+                    <!-- quantity -->
                     <div class="col-12 col-md-3 mb-3">
                         <div class="form-group">
-                            <label for="purchaseAmount">Vásárlási összeg</label>
-                            <input type="number" pInputText name="purchaseAmount" [(ngModel)]="filter.purchaseAmount"
+                            <label for="quantity">Mennyiség</label>
+                            <input type="number" pInputText name="quantity" [(ngModel)]="filter.quantity"
                                 class="form-control">
                         </div>
                     </div>
@@ -35,15 +37,15 @@
 
                 <div class="row">
 
-                    <!-- Id -->
+
+                    <!-- gross -->
                     <div class="col-12 col-md-3 mb-3">
                         <div class="form-group">
-                            <label for="cashRegisterId">Pénztárgép azonosító</label>
-                            <input type="number" pInputText name="cashRegisterId" [(ngModel)]="filter.cashRegisterId"
+                            <label for="gross">Bruttó</label>
+                            <input type="number" pInputText name="gross" [(ngModel)]="filter.gross"
                                 class="form-control">
                         </div>
                     </div>
-
 
                     <!-- Partner ID -->
                     <div class="col-12 col-md-3 mb-3">
@@ -54,16 +56,8 @@
                         </div>
                     </div>
 
-                    <!-- shopName -->
-                    <div class="col-12 col-md-3 mb-3">
-                        <div class="form-group">
-                            <label for="shopName">Bolt név</label>
-                            <input type="text" pInputText name="shopName" [(ngModel)]="filter.shopName"
-                                class="form-control">
-                        </div>
-                    </div>
-
                 </div>
+
 
                 <div class="row">
                     <!-- Buttons -->
@@ -80,15 +74,15 @@
 </div>
 
 
-<!-- purchase list table -->
+<!--  list table -->
 
 <p-button type="button" styleClass="p-button-success mt-2" (click)="exportToCSV()"><i class="fa fa-download mx-2"></i>
     Export</p-button>
 <p-button type="button" styleClass="p-button-success mx-2 mt-2" (click)="openCreateDialog()"> <i
-        class="fa fa-plus mx-2"></i> Új Vásárlás</p-button>
+        class="fa fa-plus mx-2"></i> Új vásárlási tétel</p-button>
 
 <div class="mt-3">
-    <p-table #shopTable [value]="purchases" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+    <p-table #shopTable [value]="purchaseItems" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
         [tableStyle]="{ 'min-width': '25rem'  }" currentPageReportTemplate="Összesen : {totalRecords}"
         [rowsPerPageOptions]="[5, 10, 25, 50]" styleClass="p-datatable-gridlines">
 
@@ -97,34 +91,33 @@
         <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="id">Azonosító <p-sortIcon field="id"></p-sortIcon></th>
-                <th pSortableColumn="date">Dátum <p-sortIcon field="name"></p-sortIcon></th>
-                <th pSortableColumn="purchaseAmount">Vásárlás összeg <p-sortIcon field="partnerId"></p-sortIcon></th>
-                <th pSortableColumn="cashRegisterId">Pénztárgép azonosító <p-sortIcon field="partnerId"></p-sortIcon></th>
+                <th pSortableColumn="partnerCtID">Cikk azonosító <p-sortIcon field="partnerCtID"></p-sortIcon></th>
+                <th pSortableColumn="purchaseID">Vásárlás azonosító <p-sortIcon field="purchaseID"></p-sortIcon></th>
+                <th pSortableColumn="quantity">Mennyiség <p-sortIcon field="quantity"></p-sortIcon></th>
+                <th pSortableColumn="gross">Bruttó <p-sortIcon field="gross"></p-sortIcon></th>
                 <th pSortableColumn="partnerID">Partner azonosító <p-sortIcon field="partnerID"></p-sortIcon></th>
-                <th pSortableColumn="shopName">Bolt neve<p-sortIcon field="partnerId"></p-sortIcon></th>
                 <th></th>
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-item>
             <tr>
                 <td>{{ item.id }}</td>
-                <td>{{ item.date | date:"yyyy.MM.dd hh:mm:ss"}}</td>
-                <td>{{ item.purchaseAmount }}</td>
-                <td>{{ item.cashRegisterId }}</td>
-                <td>{{ item.partnerId }}</td>
-                <td>{{ item.shopName }}</td>
+                <td>{{ item.partnerCtID }}</td>
+                <td>{{ item.purchaseID }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.gross }}</td>
+                <td>{{ item.partnerID }}</td>
                 <td style="text-align: right;" width="10">
                     <i class="fa fa-pencil fa-lg text-info" (click)="openEditDialog(item.id)"></i>
-                    <i class="fa fa-eye fa-lg text-info"  [routerLink]="['/purchase', item.id]"></i>
                 </td>
-               
             </tr>
         </ng-template>
 
 
     </p-table>
 
-
-
-    
+    <div class="text-center">
+        <p-button type="button" [routerLink]="['/purchases']"
+            styleClass="p-button-danger mx-auto mt-2">Vissza</p-button>
+    </div>
 </div>

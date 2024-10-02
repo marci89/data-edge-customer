@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
 import { CreateShopRequest, ListShopRequest, Shop, UpdateShopRequest } from '../interfaces/shop.interface';
-import { PagedList } from '../interfaces/pagination.interface';
 import { BehaviorSubject, map, of, switchMap } from 'rxjs';
 
 @Injectable({
@@ -10,7 +9,6 @@ import { BehaviorSubject, map, of, switchMap } from 'rxjs';
 })
 export class ShopService extends BaseService {
 
-    //Filtered word list subject
     private FilteredListSource = new BehaviorSubject<Shop[] | []>([]);
     filteredList$ = this.FilteredListSource.asObservable();
     
@@ -38,7 +36,7 @@ export class ShopService extends BaseService {
 
    //Create
    create(request: CreateShopRequest) {
-    return this.http.post<Shop>(this.baseUrl + 'shop', request).pipe(
+    return this.http.post<Shop>(this.baseUrl + 'shop/create', request).pipe(
       map((created: Shop) => {
         const currentShops = this.FilteredListSource.value || [];
         this.FilteredListSource.next([created, ...currentShops]);
@@ -46,9 +44,9 @@ export class ShopService extends BaseService {
     );
   }
 
-  // Update word and update it in the subject, too
+  // Update
   update(request: UpdateShopRequest) {
-    return this.http.put<Shop>(this.baseUrl + 'shop', request).pipe(
+    return this.http.put<Shop>(this.baseUrl + 'shop/update', request).pipe(
       switchMap((updatedResult: Shop) => {
         const currentRecords = this.FilteredListSource.value || [];
         const updatedRecords = currentRecords.map(result => {
@@ -62,7 +60,4 @@ export class ShopService extends BaseService {
       })
     );
   }
-
-
-
 }

@@ -1,1 +1,150 @@
-<p>item-list works!</p>
+<h1 style="text-align: center;">Cikkek</h1>
+<!-- Filter panel -->
+<div class="mt-3" *ngIf="filter">
+    <div class="card col-12">
+        <div class="card-body">
+            <form #form="ngForm" class="mb-3" (ngSubmit)="listItem()" autocomplete="off">
+
+                <div class="row">
+
+                    <!-- Id -->
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="id">Azonosító</label>
+                            <input type="number" pInputText name="id" [(ngModel)]="filter.id" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- articleNumber -->
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="articleNumber">Cikkszám</label>
+                            <input type="text" pInputText name="articleNumber" [(ngModel)]="filter.articleNumber"
+                                class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- barcode -->
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="barcode">Vonalkód</label>
+                            <input type="text" pInputText name="barcode" [(ngModel)]="filter.barcode"
+                                class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- Name -->
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="name">Név</label>
+                            <input type="text" pInputText name="name" [(ngModel)]="filter.name" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+
+                    <!-- quantitativeUnit -->
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="quantitativeUnit">Mennyiségi összeg</label>
+                            <input type="text" pInputText name="quantitativeUnit"
+                                [(ngModel)]="filter.quantitativeUnit" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- netPrice -->
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="netPrice">Nettó áregység</label>
+                            <input type="number" pInputText name="netPrice" [(ngModel)]="filter.netPrice"
+                                class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- version -->
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="version">Verzió</label>
+                            <input type="text" pInputText name="version" [(ngModel)]="filter.version"
+                                class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- Partner ID -->
+                    <div class="col-12 col-md-3 mb-3">
+                        <div class="form-group">
+                            <label for="partnerId">Partner azonosító</label>
+                            <input type="number" pInputText name="partnerId" [(ngModel)]="filter.partnerId"
+                                class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="row">
+                    <!-- Buttons -->
+                    <div class="col-12 col-md-6 mb-3 ">
+                        <div>
+                            <p-button type="submit">Szűrés</p-button>
+                            <p-button class="mx-2" type="button" (click)="resetFilters()">Szűrés visszavonása</p-button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- item list table -->
+
+<p-button type="button" styleClass="p-button-success mt-2" (click)="exportToCSV()"><i class="fa fa-download mx-2"></i>
+    Export</p-button>
+<p-button type="button" styleClass="p-button-success mx-2 mt-2" (click)="openCreateDialog()"> <i
+        class="fa fa-plus mx-2"></i> Új Cikk</p-button>
+
+<div class="mt-3">
+    <p-table #shopTable [value]="items" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+        [tableStyle]="{ 'min-width': '25rem'  }" currentPageReportTemplate="Összesen : {totalRecords}"
+        [rowsPerPageOptions]="[5, 10, 25, 50]" styleClass="p-datatable-gridlines">
+
+
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="id">Azonosító <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="articleNumber">Cikkszám <p-sortIcon field="articleNumber"></p-sortIcon></th>
+                <th pSortableColumn="barcode">Vonalkód <p-sortIcon field="barcode"></p-sortIcon></th>
+                <th pSortableColumn="name">Név <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="quantitativeUnit">Mennyiségi összeg <p-sortIcon
+                        field="quantitativeUnit"></p-sortIcon></th>
+                <th pSortableColumn="netPrice">Nettó áregység <p-sortIcon field="netPrice"></p-sortIcon></th>
+                <th pSortableColumn="version">Verzió <p-sortIcon field="version"></p-sortIcon></th>
+                <th pSortableColumn="partnerId">Partner azonosító <p-sortIcon field="partnerId"></p-sortIcon></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-item>
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.articleNumber }}</td>
+                <td>{{ item.barcode }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantitativeUnit }}</td>
+                <td>{{ item.netPrice }}</td>
+                <td>{{ item.version }}</td>
+                <td>{{ item.partnerId }}</td>
+                <td style="text-align: right;" width="10">
+                    <i class="fa fa-pencil fa-lg text-info" (click)="openEditDialog(item.id)"></i>
+                </td>
+            </tr>
+        </ng-template>
+
+
+    </p-table>
+</div>

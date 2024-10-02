@@ -19,7 +19,7 @@
       <!-- partner id -->
       <div class="mb-3">
         <label for="partnerId">Partner azonosító</label>
-        <input type="text" pInputText  formControlName="partnerId"  maxlength="200" class="form-control">
+        <input type="number" pInputText  formControlName="partnerId"  maxlength="200" class="form-control">
         <div *ngIf="createForm.get('partnerId')?.errors && createForm.get('partnerId')?.touched" class="text-danger">
           <p *ngIf="createForm.get('partnerId')?.hasError('required')">Partner azonosító kötelező!</p>
         </div>

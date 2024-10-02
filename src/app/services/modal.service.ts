@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ConfirmationService, ConfirmEventType } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import Swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -65,6 +67,20 @@ export class ModalService {
       }
     });
   }
+
+  // toaster
+  openToaster(message : string, isSuccess: boolean) {
+   
+    Swal.fire({
+      icon: isSuccess ? 'success' : 'error',
+      title: message,
+      toast: true,
+      position: 'top-right',
+      timer: 3000,
+      showConfirmButton: false,
+    });
+  }
+
 
   // close modal method
   close() {
