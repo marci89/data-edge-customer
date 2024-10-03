@@ -30,8 +30,6 @@ export class ModalService {
     });
   }
 
-  
-
   // Opening a custom confirmation popoup with any method
   openCustomConfirmation(
     id: number,

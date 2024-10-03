@@ -26,7 +26,6 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    //subscribe word list to update the table from different components
     this.purchaseListSubscription$ = this.purchaseService.filteredList$.subscribe({
       next: purchase => {
         this.purchases = purchase ?? [];
@@ -38,7 +37,7 @@ export class PurchaseListComponent implements OnInit, OnDestroy {
     this.listpurchase();
   }
 
-  // list words from server
+  // list
   listpurchase() {
 
     this.purchaseService.list(this.filter).subscribe({

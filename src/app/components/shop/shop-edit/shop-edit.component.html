@@ -10,7 +10,7 @@
       <!-- Name -->
       <div class="mb-3">
         <label for="name">Név</label>
-        <input type="text" pInputText  formControlName="name"  maxlength="200" class="form-control">
+        <input type="text" pInputText  formControlName="name"  class="form-control">
          <div *ngIf="editForm.get('name')?.errors && editForm.get('name')?.touched" class="text-danger">
            <p *ngIf="editForm.get('name')?.hasError('required')">Név megadása kötelező!</p>
          </div>
@@ -19,7 +19,7 @@
       <!-- partner id -->
       <div class="mb-3">
         <label for="partnerId">Partner azonosító</label>
-        <input type="number" pInputText  formControlName="partnerId"  maxlength="200" class="form-control">
+        <input type="number" pInputText  formControlName="partnerId"  class="form-control">
         <div *ngIf="editForm.get('partnerId')?.errors && editForm.get('partnerId')?.touched" class="text-danger">
           <p *ngIf="editForm.get('partnerId')?.hasError('required')">Partner azonosító kötelező!</p>
         </div>
@@ -32,10 +32,3 @@
       </div>
     </form>
   </div>
-  
-  
-  
-  
-  
-  
-  

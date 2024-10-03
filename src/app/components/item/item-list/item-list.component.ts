@@ -14,11 +14,9 @@ import { ItemCreateComponent } from '../item-create/item-create.component';
 
 export class ItemListComponent implements OnInit, OnDestroy {
 
-
   items: Item[] = [];
   itemListSubscription$: Subscription | undefined;
   filter: ListItemRequest = {} as ListItemRequest;
-
 
   constructor(
     private itemService: ItemService,
@@ -31,8 +29,6 @@ export class ItemListComponent implements OnInit, OnDestroy {
         this.items = items ?? [];
       }
     });
-
-
 
     this.listItem();
   }
@@ -89,8 +85,6 @@ export class ItemListComponent implements OnInit, OnDestroy {
       link.click();
       document.body.removeChild(link); 
     }
-
-  
 
   ngOnDestroy() {
     if (this.itemListSubscription$) {

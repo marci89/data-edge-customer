@@ -35,12 +35,10 @@ export class PurchaseItemListComponent implements OnInit, OnDestroy {
       }
     });
 
-
-
     this.listPurchaseItem();
   }
 
-  // list  from server
+  // list from server
   listPurchaseItem() {
     this.filter.purchaseID = this.route.snapshot.params['id'],
 

@@ -16,7 +16,6 @@ export class ShopService extends BaseService {
     super();
   }
 
-
   //Read by id
   readById(id: number) {
     return this.http.get<Shop>(this.baseUrl + 'shop/' + id);

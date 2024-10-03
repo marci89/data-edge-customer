@@ -13,12 +13,8 @@ const routes: Routes = [
   { path: '', component: PurchaseListComponent },
   { path: 'purchases', component: PurchaseListComponent },
   { path: 'purchase/:id', component: PurchaseItemListComponent},
-  { path: 'purchases/create', component: PurchaseCreateComponent },
   { path: 'shops', component: ShopListComponent },
-  { path: 'shops/create', component: ShopCreateComponent },
   { path: 'items', component: ItemListComponent },
-  { path: 'items/create', component: ItemCreateComponent },
-
 
   { path: '**', component: PurchaseListComponent, pathMatch: 'full' }
 ];

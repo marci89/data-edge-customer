@@ -17,7 +17,6 @@ constructor(private http: HttpClient) {
   super();
 }
 
-
 //Read by id
 readById(id: number) {
   return this.http.get<PurchaseItem>(this.baseUrl + 'purchaseItem/' + id);

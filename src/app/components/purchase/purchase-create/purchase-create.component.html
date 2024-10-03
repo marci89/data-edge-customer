@@ -10,7 +10,7 @@
         <!-- purchaseAmount -->
         <div class="mb-3">
             <label for="purchaseAmount">Vásárlás összeg</label>
-            <input type="number" pInputText formControlName="purchaseAmount" maxlength="200" class="form-control">
+            <input type="number" pInputText formControlName="purchaseAmount"  class="form-control">
             <div *ngIf="createForm.get('purchaseAmount')?.errors && createForm.get('purchaseAmount')?.touched"
                 class="text-danger">
                 <p *ngIf="createForm.get('purchaseAmount')?.hasError('required')">Vásárlás összeg megadása kötelező!</p>
@@ -20,7 +20,7 @@
         <!-- cashRegisterId -->
         <div class="mb-3">
             <label for="cashRegisterId">Pénztárgép azonosító</label>
-            <input type="number" pInputText formControlName="cashRegisterId" maxlength="200" class="form-control">
+            <input type="number" pInputText formControlName="cashRegisterId"  class="form-control">
             <div *ngIf="createForm.get('cashRegisterId')?.errors && createForm.get('cashRegisterId')?.touched"
                 class="text-danger">
                 <p *ngIf="createForm.get('cashRegisterId')?.hasError('required')">Pénztárgép azonosító megadása kötelező!
@@ -31,7 +31,7 @@
         <!-- partner id -->
         <div class="mb-3">
             <label for="partnerId">Partner azonosító</label>
-            <input type="number" pInputText formControlName="partnerId" maxlength="200" class="form-control">
+            <input type="number" pInputText formControlName="partnerId"  class="form-control">
             <div *ngIf="createForm.get('partnerId')?.errors && createForm.get('partnerId')?.touched" class="text-danger">
                 <p *ngIf="createForm.get('partnerId')?.hasError('required')">Partner azonosító kötelező!</p>
             </div>

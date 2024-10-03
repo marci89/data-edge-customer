@@ -7,12 +7,10 @@
             {{ serverError }}
         </div>
 
-
-
         <!-- articleNumber -->
         <div class="mb-3">
             <label for="articleNumber">Cikkszám</label>
-            <input type="text" pInputText formControlName="articleNumber" maxlength="200" class="form-control">
+            <input type="text" pInputText formControlName="articleNumber" class="form-control">
             <div *ngIf="createForm.get('articleNumber')?.errors && createForm.get('articleNumber')?.touched"
                 class="text-danger">
                 <p *ngIf="createForm.get('articleNumber')?.hasError('required')">Cikkszám megadása kötelező!</p>
@@ -22,7 +20,7 @@
         <!-- barcode -->
         <div class="mb-3">
             <label for="barcode">Vonalkód</label>
-            <input type="text" pInputText formControlName="barcode" maxlength="200" class="form-control">
+            <input type="text" pInputText formControlName="barcode" class="form-control">
             <div *ngIf="createForm.get('barcode')?.errors && createForm.get('barcode')?.touched" class="text-danger">
                 <p *ngIf="createForm.get('barcode')?.hasError('required')">Vonalkód megadása kötelező!</p>
             </div>
@@ -32,7 +30,7 @@
         <!-- Name -->
         <div class="mb-3">
             <label for="name">Név</label>
-            <input type="text" pInputText formControlName="name" maxlength="200" class="form-control">
+            <input type="text" pInputText formControlName="name" class="form-control">
             <div *ngIf="createForm.get('name')?.errors && createForm.get('name')?.touched" class="text-danger">
                 <p *ngIf="createForm.get('name')?.hasError('required')">Név megadása kötelező!</p>
             </div>
@@ -41,37 +39,36 @@
         <!-- quantitativeUnit -->
         <div class="mb-3">
             <label for="quantitativeUnit">Mennyiségi egység</label>
-            <input type="text" pInputText formControlName="quantitativeUnit" maxlength="200" class="form-control">
+            <input type="text" pInputText formControlName="quantitativeUnit" class="form-control">
             <div *ngIf="createForm.get('quantitativeUnit')?.errors && createForm.get('quantitativeUnit')?.touched"
                 class="text-danger">
-                <p *ngIf="createForm.get('quantitativeUnit')?.hasError('required')">Mennyiségi egység megadása kötelező!</p>
+                <p *ngIf="createForm.get('quantitativeUnit')?.hasError('required')">Mennyiségi egység megadása kötelező!
+                </p>
             </div>
         </div>
 
-             <!-- netPrice -->
-             <div class="mb-3">
-                <label for="netPrice">Nettó egységár</label>
-                <input type="number" pInputText formControlName="netPrice" maxlength="200" class="form-control">
-                <div *ngIf="createForm.get('netPrice')?.errors && createForm.get('netPrice')?.touched"
-                    class="text-danger">
-                    <p *ngIf="createForm.get('netPrice')?.hasError('required')">Nettó egységár megadása kötelező!</p>
-                </div>
+        <!-- netPrice -->
+        <div class="mb-3">
+            <label for="netPrice">Nettó egységár</label>
+            <input type="number" pInputText formControlName="netPrice" class="form-control">
+            <div *ngIf="createForm.get('netPrice')?.errors && createForm.get('netPrice')?.touched" class="text-danger">
+                <p *ngIf="createForm.get('netPrice')?.hasError('required')">Nettó egységár megadása kötelező!</p>
             </div>
+        </div>
 
-              <!-- version -->
-              <div class="mb-3">
-                <label for="version">Verzió</label>
-                <input type="number" pInputText formControlName="version" maxlength="200" class="form-control">
-                <div *ngIf="createForm.get('version')?.errors && createForm.get('version')?.touched"
-                    class="text-danger">
-                    <p *ngIf="createForm.get('version')?.hasError('required')">Verzió megadása kötelező!</p>
-                </div>
+        <!-- version -->
+        <div class="mb-3">
+            <label for="version">Verzió</label>
+            <input type="number" pInputText formControlName="version" class="form-control">
+            <div *ngIf="createForm.get('version')?.errors && createForm.get('version')?.touched" class="text-danger">
+                <p *ngIf="createForm.get('version')?.hasError('required')">Verzió megadása kötelező!</p>
             </div>
+        </div>
 
         <!-- partner id -->
         <div class="mb-3">
             <label for="partnerId">Partner azonosító</label>
-            <input type="number" pInputText formControlName="partnerId" maxlength="200" class="form-control">
+            <input type="number" pInputText formControlName="partnerId" class="form-control">
             <div *ngIf="createForm.get('partnerId')?.errors && createForm.get('partnerId')?.touched"
                 class="text-danger">
                 <p *ngIf="createForm.get('partnerId')?.hasError('required')">Partner azonosító kötelező!</p>

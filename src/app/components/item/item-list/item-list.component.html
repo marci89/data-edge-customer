@@ -82,10 +82,6 @@
                     </div>
                 </div>
 
-
-
-
-
                 <div class="row">
                     <!-- Buttons -->
                     <div class="col-12 col-md-6 mb-3 ">
@@ -102,7 +98,6 @@
 
 
 <!-- item list table -->
-
 <p-button type="button" styleClass="p-button-success mt-2" (click)="exportToCSV()"><i class="fa fa-download mx-2"></i>
     Export</p-button>
 <p-button type="button" styleClass="p-button-success mx-2 mt-2" (click)="openCreateDialog()"> <i
@@ -112,8 +107,6 @@
     <p-table #shopTable [value]="items" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
         [tableStyle]="{ 'min-width': '25rem'  }" currentPageReportTemplate="Összesen : {totalRecords}"
         [rowsPerPageOptions]="[5, 10, 25, 50]" styleClass="p-datatable-gridlines">
-
-
 
         <ng-template pTemplate="header">
             <tr>
@@ -144,7 +137,5 @@
                 </td>
             </tr>
         </ng-template>
-
-
     </p-table>
 </div>

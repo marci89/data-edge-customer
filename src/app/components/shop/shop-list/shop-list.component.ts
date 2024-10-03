@@ -15,11 +15,9 @@ import { ShopEditComponent } from '../shop-edit/shop-edit.component';
 
 export class ShopListComponent implements OnInit, OnDestroy {
 
-
   shops: Shop[] = [];
   shopListSubscription$: Subscription | undefined;
   filter: ListShopRequest = {} as ListShopRequest;
-
 
   constructor(
     private shopService: ShopService,
@@ -32,8 +30,6 @@ export class ShopListComponent implements OnInit, OnDestroy {
         this.shops = shops ?? [];
       }
     });
-
-
 
     this.listShop();
   }
@@ -85,8 +81,6 @@ export class ShopListComponent implements OnInit, OnDestroy {
       link.click();
       document.body.removeChild(link); 
     }
-
-  
 
   ngOnDestroy() {
     if (this.shopListSubscription$) {

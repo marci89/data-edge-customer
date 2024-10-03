@@ -26,7 +26,7 @@ export class ItemEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
-    this.readShop();
+    this.readItem();
   }
 
   //Get dialog data (id)
@@ -53,7 +53,7 @@ export class ItemEditComponent implements OnInit {
   }
 
    // Read by id
-   readShop() {
+   readItem() {
     const id = this.getIdFromDialog();
     this.itemService.readById(id).subscribe({
       next: item => {

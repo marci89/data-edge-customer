@@ -49,7 +49,6 @@
   
 
   <!-- shop list table -->
-
   <p-button type="button" styleClass="p-button-success mt-2" (click)="exportToCSV()"><i class="fa fa-download mx-2"></i> Export</p-button>
   <p-button type="button" styleClass="p-button-success mx-2 mt-2" (click)="openCreateDialog()"> <i class="fa fa-plus mx-2"></i> Új bolt</p-button>
   
@@ -65,9 +64,6 @@
     [rowsPerPageOptions]="[5, 10, 25, 50]"
     styleClass="p-datatable-gridlines" 
    >
-
- 
-
     <ng-template pTemplate="header">
         <tr>
           <th pSortableColumn="id">Azonosító <p-sortIcon
@@ -89,8 +85,6 @@
           </td>
         </tr>
       </ng-template>
-
-  
     </p-table>
   </div>
   
